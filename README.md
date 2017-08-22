@@ -1,5 +1,5 @@
-README for SMART
-----------------
+README for SMART2
+-----------------
 *Time-stamp: <2017-07-09 16:39:00 Hongbo Liu>*
 
 Introduction
