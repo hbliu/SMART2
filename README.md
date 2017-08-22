@@ -70,6 +70,7 @@ Installation directory of SMART:
 
 Positional arguments
 ^^^^^^^^^^^^^^^^^^^^
+
 **MethylMatrix**
     The input methylation file (such as /WGBS/MethylMatrix.txt) including methylation values in all samples to compare (REQUIRED). The methylation data should be arranged as a matrix in which each row represents a CpG site. The columns are tab-separated. The column names should be included in the first line, with the first three columns representing the location of CpG sites: chrome, start, end. The methylation values start from the fourth column. And the methylation value should be between 0 (unmethylated) to 1 (fully methylated). The missing values should be shown as -. The names of samples should be given as G1_1,G1_2,G2_1,G2_2,G3_1,G3_2,G3_3, in which Gi represents group i. The Methylation matrix can be build based on bed files (chrome start end betavalue) by bedtools as: bedtools unionbedg -i G1_1.bed G1_2.bed G2_1.bed G2_2.bed G3_1.bed G3_2.bed G3_3.bed -header -names G1_1 G1_2 G2_1 G2_2 G3_1 G3_2 G3_3 -filler - > MethylMatrix.txt. [Type: file]
 
@@ -77,34 +78,49 @@ Positional arguments
 
 Optional arguments
 ^^^^^^^^^^^^^^^^^^
+
 **-t {DeNovoDMR,DMROI,DMC}**
     Type of project including 'DeNovoDMR','DMROI' and 'DMC'. DeNovoDMR means de novo identification of differentially methylated regions (DMRs) based on genome segmentation. DMROI means the comparison of the methylation difference in regions of interest (ROIs) across multiple groups. DMC means identification of differentially methylated CpG sites (DMCs). It should be noted DMC is time-consuming for whole-renome methylation data. [Type: string] [DEFAULT: 'DeNovoDMR']
+    
 **-r REGION_OF_INTEREST**
     Genome regions of interest in bed format without column names (such as /WGBS/Regions_of_interest.bed) for project type DMROI (REQUIRED only for DMROI). The regions in the file should be sorted by chromosome and then by start position (e.g., sort -k1,1 -k2,2n in.bed > in.sorted.bed). If this file is provided, SMART treat each region as a unit and compare its mean methylation across groups by methylation specificity and ANOVA analysis. DEFAULT: '' [Type: string]
+    
 **-n PROJECT_NAME**
     Project name, which will be used to generate output file names. DEFAULT: "SMART" [Type: string]
+    
 **-o OUTPUT_FOLDER** 
     The folder in which the result will be output. If specified all output files will be written to that directory. [Type: folder] [DEFAULT: the directory named using project name and current time (such as SMART20140801132559) in the current working directory]
+    
 **-MR MISS_VALUE_REPLACE**
     Replace the missing value with the mediate methylation value of available samples in the corresponding group. The user can control whether to replace missing value by setting this parameter from 0.01 (meaning methylation values are available in at least 1% of samples) to 1.0 (meaning methylation values are available in 100% of samples, i.e there is no missing values). [Type: float] [Range: 0.01 ~ 1.0] [DEFAULT: 0.5]
+    
 **-MS METHYLATION_SPECIFICITY**
     Methylation Specificity Threshold for DMC or DMR calling. This parameter can be used to identify DMC or DMR as the CpG site or region with methylation specificity which is greater than the threshold. [Type: float] [Range: 0.2 ~ 1.0] [DEFAULT: 0.5]
+    
 **-ED EUCLIDEAN_DISTANCE**
     Euclidean Distance Threshold for methylation similarity between neighboring CpGs which is used in genome segmentation for de novo identification of DMR. The methylation similarity between neighboring CpGs is high if the Euclidean distance is less than the threshold. [Type: float] [Range: 0.01 ~ 0.5] [DEFAULT: 0.2]
+    
 **-SM SIMILARITY_ENTROPY**
     Similarity Entropy Threshold for methylation similarity between neighboring CpGs which is used in genome segmentation for de novo identification of DMR. The methylation similarity between neighboring CpGs is high if similarity entropy is less than the threshold. [Type: float] [Range: 0.01 ~ 1.0] [DEFAULT: 0.6]
+    
 **-CD CPG_DISTANCE**
     CpG Distance Threshold for the maximal distance between neighboring CpGs which is used in genome segmentation for de novo identification of DMR. The neighboring CpGs will be merged if the distance less than this threshold. [Type: int] [Range: 1 ~ 2000] [DEFAULT: 500]
+    
 **-CN CPG_NUMBER**
     Segment CpG Number Threshold for the minimal number of CpGs of merged segment and de novo identified DMR. The segments/DMRs with CpG number larger than this threshold will be output for further analysis. [Type: int] [Range: > 1] [DEFAULT: 5]
+    
 **-SL SEGMENT_LENGTH**
     Segment Length Threshold for the minimal length of merged segment and de novo identified DMR. The segments/DMRs with a length larger than this threshold will be output for further analysis. [Type: int] [Range: > 1] [DEFAULT: 20]
+    
 **-PD P_DMR**
     p value of one-way analysis of variance (ANOVA) which is carried out for identification of or DMCs or DMRs across multiple groups. The segments with p value less than this threshold are identified as DMC or DMR. [Type: float] [Range: 1.0e-100 ~ 0.05] [DEFAULT: 0.05]
+    
 **-PM P_METHYLMARK**
     p value of one sample t-test which is carried out for identification of Methylation mark in a specific group based on the identified DMRs. The DMRs with p value less than this threshold is identified as group- specific methylation mark (Hyper methylation mark or Hypo methylation mark). [Type: float] [Range: 1.0e-100 ~ 0.05] [DEFAULT: 0.05]
+    
 **-v, --version**
     Show program's version number and exit
+    
 **-h, --help**
     Show this help message and exit
 
