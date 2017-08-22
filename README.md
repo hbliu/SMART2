@@ -68,16 +68,14 @@ Installation directory of SMART:
                                    [-SL SEGMENT_LENGTH] [-PD P_DMR] [-PM P_METHYLMARK] [-v] [-h]
 
 
-Positional arguments
-^^^^^^^^^^^^^^^^^^^^
+**Positional arguments**
 
 **MethylMatrix**
     The input methylation file (such as /WGBS/MethylMatrix.txt) including methylation values in all samples to compare (REQUIRED). The methylation data should be arranged as a matrix in which each row represents a CpG site. The columns are tab-separated. The column names should be included in the first line, with the first three columns representing the location of CpG sites: chrome, start, end. The methylation values start from the fourth column. And the methylation value should be between 0 (unmethylated) to 1 (fully methylated). The missing values should be shown as -. The names of samples should be given as G1_1,G1_2,G2_1,G2_2,G3_1,G3_2,G3_3, in which Gi represents group i. The Methylation matrix can be build based on bed files (chrome start end betavalue) by bedtools as: bedtools unionbedg -i G1_1.bed G1_2.bed G2_1.bed G2_2.bed G3_1.bed G3_2.bed G3_3.bed -header -names G1_1 G1_2 G2_1 G2_2 G3_1 G3_2 G3_3 -filler - > MethylMatrix.txt. [Type: file]
 
     The example data is also available `here <http://fame.edbc.org/smart/Example_Data_for_SMART2.zip>`_.
 
-Optional arguments
-^^^^^^^^^^^^^^^^^^
+**Optional arguments**
 
 **-t {DeNovoDMR,DMROI,DMC}**
     Type of project including 'DeNovoDMR','DMROI' and 'DMC'. DeNovoDMR means de novo identification of differentially methylated regions (DMRs) based on genome segmentation. DMROI means the comparison of the methylation difference in regions of interest (ROIs) across multiple groups. DMC means identification of differentially methylated CpG sites (DMCs). It should be noted DMC is time-consuming for whole-renome methylation data. [Type: string] [DEFAULT: 'DeNovoDMR']
