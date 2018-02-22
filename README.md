@@ -2,8 +2,6 @@ README for SMART
 ----------------
 *Time-stamp: <2018-01-31 10:35:00 Hongbo Liu>*
 
-|PyPI| |License| |Build Status| |Platform|
-
 Introduction
 ------------
 **SMART2** is a newly developed tool for deep analysis of DNA methylation data detected by bisulfite sequencing platforms. This tool is focused on four main functions including **de novo identification of differentially methylated regions (DMRs) by genome segmentation, identification of DMRs from predefined regions of interest, identification of differentially methylated CpG sites, and genome segmentation**. In particular, **SMART2 supports Case-Control DMR calling which is useful for disease methylome analsyis**. It is known that DNA methylation plays important roles in the regulation of cell development and differentiation. DNA methylation/unmethylation mechanisms are common in all tissue/cell. However, different cell types with the same genome have different methylomes. Recently, high-throughput sequencing combining bisulfite treatment (**Bisulfite-Seq**) have been used to generate DNA methylomes from a wide range of human tissue/cell types at a genome-wide perspective. In order to de novo identify DMRs across different biological groups, entropy-based procedures facilitated the quantification of **methylation specificity** for each CpG and the determination of the Euclidean distance and similar entropy for each pair of neighboring CpGs. Subsequently, **genome segmentation** based on these quantified parameters segments the genome into primary segments comprising CpG sites with high methylation similarities across all groups. Further, the primary segments in close proximity and sharing similar methylation patterns were merged into larger segments of different types, including **DMRs** and **non-DMRs** which are identified based on methylation specificity and one-way ANOVA analysis. Eventually, the DMRs with specific hypo-/hypermethylation in the minority of groups, **group-specific hypomethylation marks (HypoMarks)** and **the group-specific hypermethylation marks (HyperMarks)**, are identified using a statistical method. To facilitate the mining of methylation marks across cell types and species. In addition, SMART2 also supports the identification of DMRs from pre-defined regions of interest and differentially methylated CpG sites.
@@ -203,10 +201,3 @@ Contact
 -------
 :For any help:  you are welcome to write to Hongbo Liu (hongbo919@gmail.com) at http://cce.edbc.org/members/HongboLiu.html.
 
-.. url-marker
-.. |PyPI| image:: https://img.shields.io/pypi/v/SMART-BS-Seq.svg
-   :target: https://pypi.python.org/pypi/SMART-BS-Seq
-.. |License| image:: https://img.shields.io/pypi/l/Django.svg?style=plastic   :target: 
-.. |Build Status| image:: https://img.shields.io/pypi/status/Django.svg?style=plastic   :target: 
-.. |Platform| image:: https://img.shields.io/conda/pn/conda-forge/python.svg
-   :target: https://pypi.python.org/pypi/SMART-BS-Seq
