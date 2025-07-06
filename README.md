@@ -1,6 +1,6 @@
 SMART: Specific Methylation Analysis and Report Tool
 ----------------
-<img src="http://fame.edbc.org/smart/images/SMART2_Workflow.jpg" alt="isolated" width="600"/>
+<img src="http://fame.edbc.org/smart/images/SMART2_Workflow.jpg" alt="isolated" width="700"/>
 
 Introduction
 ------------
